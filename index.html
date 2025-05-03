@@ -1,1 +1,438 @@
-<h1>Welcome to Resume</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sohel Ahamed - Resume</title>
+  <meta name="description" content="Resume of Sohel Ahamed - Full Stack/MEAN Stack Software Engineer with expertise in Node, Angular, JavaScript, Java, MongoDB, and microservices architecture.">
+  <!-- Bootstrap CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons for clickable icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0d6efd;
+      --primary-hover: #0a58ca;
+      --bg-light: #f8f9fa;
+      --text-color: #343a40;
+      --card-bg: #fff;
+      --shadow-light: rgba(0,0,0,0.05);
+      --shadow-medium: rgba(0,0,0,0.1);
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-light);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    a:hover { 
+      color: var(--primary-hover);
+    }
+    .navbar {
+      background: #fff;
+      box-shadow: 0 2px 4px var(--shadow-light);
+    }
+    .navbar-nav .nav-link {
+      padding: 1rem;
+      font-weight: 500;
+    }
+    header {
+      background: linear-gradient(135deg, #e9ecef, #ffffff);
+      text-align: center;
+      padding: 3rem 1rem;
+      box-shadow: 0 6px 12px var(--shadow-medium);
+      position: relative;
+      overflow: hidden;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      top: -20%; left: -20%;
+      width: 140%; height: 140%;
+      background: radial-gradient(circle, rgba(13,110,253,0.05), transparent 70%);
+      animation: pulse 8s infinite;
+      z-index: 0;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+    header .container { position: relative; z-index: 1; }
+    header h1 { font-size: 3.2rem; margin-bottom: 0.5rem; animation: slideIn 1s ease-out; }
+    header p.headline { font-size: 1.3rem; font-weight: 300; animation: fadeIn 2s ease-out; }
+    @keyframes slideIn { 
+      from { transform: translateY(-20px); opacity: 0; } 
+      to { transform: translateY(0); opacity: 1; } 
+    }
+    @keyframes fadeIn { 
+      from { opacity: 0; } 
+      to { opacity: 1; } 
+    }
+    main {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .content-section {
+      background: var(--card-bg);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px var(--shadow-light);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .content-section:hover { 
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px var(--shadow-medium);
+    }
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      border-bottom: 3px solid var(--primary-color);
+      padding-bottom: 0.5rem;
+      position: relative;
+    }
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 50px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
+      border-radius: 2px;
+    }
+    ul.skills {
+      list-style: none;
+      padding: 0;
+    }
+    ul.skills li {
+      display: inline-block;
+      background: #e9ecef;
+      padding: 0.4rem 0.8rem;
+      margin: 0.3rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      transition: background 0.3s, transform 0.3s;
+    }
+    ul.skills li:hover { 
+      background: #ced4da;
+      transform: scale(1.05);
+    }
+    .certification-card { 
+      border: none; 
+      border-radius: 10px; 
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .certification-card:hover { 
+      box-shadow: 0 4px 12px var(--shadow-medium);
+      transform: translateY(-3px);
+    }
+    footer {
+      background: #e9ecef;
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+    }
+    #backToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 8px var(--shadow-light);
+      transition: background 0.3s, transform 0.3s;
+      z-index: 1000;
+    }
+    #backToTop:hover {
+      background: var(--primary-hover);
+      transform: scale(1.1);
+    }
+    @media (max-width: 576px) {
+      header h1 { font-size: 2.4rem; }
+      header p.headline { font-size: 1rem; }
+      .section-title { font-size: 1.6rem; }
+    }
+    .experience-item {
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #eee;
+    }
+    .experience-item:last-child {
+      border-bottom: none;
+    }
+    .project-item {
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Menu -->
+  <nav class="navbar navbar-expand-lg sticky-top" aria-label="Main Navigation">
+    <div class="container">
+      <a class="navbar-brand" href="#">Resume</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#profile">Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header Section -->
+  <header>
+    <div class="container">
+      <h1>Sohel Ahamed</h1>
+      <p class="headline">
+        Full Stack/MEAN Stack Software Engineer | Node.js | Angular | JavaScript | Java | MongoDB | Microservices
+      </p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Profile Summary -->
+    <section class="content-section" id="profile" aria-labelledby="profile-heading">
+      <h2 class="section-title" id="profile-heading">Profile Summary</h2>
+      <p>
+        Experienced Full Stack Software Engineer with 8.3 years of expertise in developing robust applications. Proficient in utilizing Node, Angular, JavaScript, TypeScript, Express, Java, MongoDB, SQL, Spring Boot, microservices architecture, and micro frontend architecture. Well-versed in both low-level and high-level system design.
+      </p>
+      <p>
+        Particularly adept at applying advanced Data Structures and Algorithms (DSA) to optimize code efficiency and enhance system scalability. Skilled in using Jest for comprehensive unit testing, ensuring code quality and reliability. Possesses a strong foundation in DSA principles, contributing to the development of high-performance solutions across the entire technology stack.
+      </p>
+    </section>
+
+    <!-- Work Experience -->
+    <section class="content-section" id="experience" aria-labelledby="experience-heading">
+      <h2 class="section-title" id="experience-heading">Work Experience</h2>
+      
+      <!-- Ernst and Young Experience -->
+      <div class="experience-item">
+        <h3>Senior Technical Analyst (Full Stack Software Engineer) - Ernst and Young <small class="text-muted">(Sep 2022 - Present)</small></h3>
+        <ul>
+          <li>Working as a Full Stack Software Engineer with a successful tenure at Fidelity Investment, specializing in the development of smart contracts and a sophisticated Trusted Devices umbrella page.</li>
+          <li>Developed Goal Profile Questionnaire, investment strategy digital and navigation API, optimizing end-to-end development processes.</li>
+          <li>Significantly enhanced API performance and implemented advanced security measures, reducing unauthorized access incidents by 30%.</li>
+        </ul>
+      </div>
+      
+      <!-- IBM Experience -->
+      <div class="experience-item">
+        <h3>Advisory System Analyst (Full Stack Software Engineer) - IBM <small class="text-muted">(Jun 2021 - Sep 2022)</small></h3>
+        <ul>
+          <li>Worked as Full Stack Software Engineer at Client Barclays Bank, specializing in the SCAR Software project.</li>
+          <li>Successfully developed an integrated cost allocation repository, serving as a centralized platform for storage of allocation rules, resulting in a 40% reduction in manual allocation efforts.</li>
+          <li>Expertise includes end-to-end development, API optimization, reducing response time by 30% and performance enhancement and deployment to AWS.</li>
+        </ul>
+      </div>
+
+      <!-- HCL Experience -->
+      <div class="experience-item">
+        <h3>Lead Developer (MEAN/Full Stack Developer) - HCL <small class="text-muted">(Oct 2019 - Jun 2021)</small></h3>
+        <ul>
+          <li>Worked as Full Stack Software Engineer for Client Schneider Electric, contributing to the MCSet 17.5 kV switchboard project.</li>
+          <li>Specialized in developing advanced Power SCADA Operation Software, and implemented strategic optimizations for end-to-end development.</li>
+          <li>Achieved a 25% improvement in overall system performance through strategic optimizations and deployment to AWS.</li>
+        </ul>
+      </div>
+
+      <!-- Litmus World Experience -->
+      <div class="experience-item">
+        <h3>Senior Developer (MEAN Stack) - Litmus World <small class="text-muted">(Jan 2019 - Sep 2019)</small></h3>
+        <ul>
+          <li>Led the development of the Action Management module, playing a pivotal role in the identification, prioritization, tracking, and real-time resolution of custom issues.</li>
+          <li>Implemented strategic optimizations for end-to-end development, API optimization, reducing response time by 20%.</li>
+        </ul>
+      </div>
+
+      <!-- ExcelltyGlobal Experience -->
+      <div class="experience-item">
+        <h3>Software Engineer (MEAN Stack Developer) - ExcelltyGlobal (Acquired by Ceridian) <small class="text-muted">(Oct 2016 - Jan 2019)</small></h3>
+        <ul>
+          <li>Worked as a MEAN Stack Software Engineer for a new Human Capital Management (HCM) project, overseeing end-to-end development.</li>
+          <li>Achieved a 20% improvement in overall system performance through strategic optimizations.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="content-section" id="education" aria-labelledby="education-heading">
+      <h2 class="section-title" id="education-heading">Education</h2>
+      <div>
+        <p><strong>Master of Science in Computer Science</strong> - Scaler Newersity (Woolf University) <small class="text-muted">(Jan 2024 - Present)</small></p>
+        <p>Focus Areas: Data Structures and Algorithms (DSA), System Design, Full Stack Development, Machine Learning, Data Science</p>
+        <p><strong>Bachelor of Engineering (BE) in Electronics and Communication</strong> - East Point College of Engineering and Technology, Bangalore (Visvesvaraya Technological University) <small class="text-muted">(2015)</small></p>
+      </div>
+    </section>
+
+    <!-- Key Skills -->
+    <section class="content-section" id="skills" aria-labelledby="skills-heading">
+      <h2 class="section-title" id="skills-heading">Key Skills</h2>
+      <ul class="skills">
+        <li>JavaScript</li>
+        <li>Java</li>
+        <li>TypeScript</li>
+        <li>Node.js</li>
+        <li>Angular (6/10/12/14/15/17)</li>
+        <li>Express.js</li>
+        <li>Spring Boot</li>
+        <li>MongoDB</li>
+        <li>SQL</li>
+        <li>Microservices</li>
+        <li>Micro Frontend</li>
+        <li>Data Structures</li>
+        <li>Algorithms</li>
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>SCSS</li>
+        <li>Bootstrap</li>
+        <li>Jest</li>
+        <li>Jasmine</li>
+        <li>Karma</li>
+        <li>Git</li>
+        <li>JIRA</li>
+        <li>Microsoft Azure</li>
+        <li>AWS</li>
+      </ul>
+    </section>
+
+    <!-- Projects -->
+    <section class="content-section" id="projects" aria-labelledby="projects-heading">
+      <h2 class="section-title" id="projects-heading">Projects</h2>
+      
+      <div class="project-item">
+        <h4>Investment Strategy Digital <small class="text-muted">(Fidelity Investment, Jul 2024 - Present)</small></h4>
+        <p>Helps customers select an investment strategy and specific investments that best align with their investment preferences, risk profile, household situation, and account eligibility.</p>
+        <p><strong>Role:</strong> Full Stack Developer</p>
+        <ul>
+          <li>Designing, Development, Coding and Creating Complete front-end UI, integration using Angular and backend Rest API using NodeJS.</li>
+          <li>Unit Testing</li>
+        </ul>
+      </div>
+      
+      <div class="project-item">
+        <h4>Goal Profile Questionnaire (GPQ) <small class="text-muted">(Fidelity Investment, Jan 2024 - Jun 2024)</small></h4>
+        <p>The GPQ is used to determine a recommended target asset Mix all accounts that applied to client goal such as retirement education and wealth transfer.</p>
+        <p><strong>Role:</strong> Full Stack Developer and UI</p>
+        <ul>
+          <li>Designing, Development, Coding and Creating Complete front-end UI, integration using Angular and backend Rest API using NodeJS and Spring Boot.</li>
+          <li>Unit Testing</li>
+        </ul>
+      </div>
+      
+      <div class="project-item">
+        <h4>Trusted Devices <small class="text-muted">(Fidelity Investment, Apr 2023 - Jan 2024)</small></h4>
+        <p>This application is shared across multiple applications, providing users the ability to view their trusted devices (iPhone, Tablet, Mac, Android, PC etc) as well as remove trusted devices that already exist.</p>
+        <p><strong>Role:</strong> MEAN Stack/Full Stack Developer and UI (Project development from Scratch)</p>
+        <ul>
+          <li>Designing, Development, Coding and Creating Complete front-end UI, integration using Angular and backend Rest API using NodeJS and Spring Boot.</li>
+          <li>Unit Testing</li>
+        </ul>
+      </div>
+      
+      <div class="project-item">
+        <h4>Smart Contracts <small class="text-muted">(Fidelity Investment, Nov 2022 - Mar 2023)</small></h4>
+        <p>Smart contracts are blockchain-based programs that automatically execute agreements when predefined conditions are met, ensuring immediate certainty for all participants without intermediaries or time delays.</p>
+        <p><strong>Role:</strong> Full Stack Developer</p>
+        <ul>
+          <li>Designing, Development, Coding and Creating Complete front-end UI, integration using Angular and backend Rest API using NodeJS.</li>
+          <li>Unit Testing and Validation</li>
+        </ul>
+      </div>
+      
+      <div class="project-item">
+        <h4>SCAR (Service Cost Allocation Repository) <small class="text-muted">(Barclays Bank, Jul 2021 - Sep 2022)</small></h4>
+        <p>Led the end-to-end development of SCAR, an integrated cost allocation repository, ensuring a centralized platform for allocation rules storage and documentary evidence.</p>
+        <p><strong>Role:</strong> Full Stack Developer</p>
+        <ul>
+          <li>Designing, Development, Coding and Creating Complete front-end UI, integration using Angular and backend Rest API using NodeJS for this tool and Spring Boot.</li>
+          <li>Unit Testing and Validation</li>
+        </ul>
+      </div>
+      
+      <div class="project-item">
+        <h4>EcoStruxure™ Power SCADA Operation <small class="text-muted">(Schneider Electric, Amazon, Microsoft)</small></h4>
+        <p>Contributed to the development and integration of the EcoStruxure™ Power SCADA Operation tool, maximizing uptime and providing real-time situational awareness for specialized power networks.</p>
+        <p><strong>Role:</strong> Full Stack Developer</p>
+        <ul>
+          <li>Creating Complete front-end and backend Rest API using NodeJS for this tool. Involving in the Development integration using Angular.</li>
+          <li>Involved in writing client-side validation And Server-Side Validation Unit Testing for Node AND Angular.</li>
+        </ul>
+      </div>
+    </section>
+    
+    <!-- Contact & Social -->
+    <section class="content-section" id="contact" aria-labelledby="contact-heading">
+      <h2 class="section-title" id="contact-heading">Contact &amp; Social</h2>
+      <p><strong>Address:</strong> #3A, 3rd Floor, ANZ residency, Balaji Krupa layout, Rk hedge Nagar Bangalore, Pin-560077, India</p>
+      <p><strong>Languages:</strong> English, Hindi, Bengali</p>
+      <p>
+        <strong>Phone:</strong> 
+        <a href="tel:+918553654629" aria-label="Call Sohel Ahamed">
+          <i class="bi bi-telephone"></i> +91 8553654629
+        </a>
+      </p>
+      <p>
+        <strong>Email:</strong> 
+        <a href="mailto:ahamedsohel101@gmail.com" aria-label="Send an email to Sohel Ahamed">
+          <i class="bi bi-envelope"></i> ahamedsohel101@gmail.com
+        </a>
+      </p>
+      <p>
+        <strong>LinkedIn:</strong> 
+        <a href="https://www.linkedin.com/in/sohel-ahamed-382408113/" target="_blank" rel="noopener noreferrer" aria-label="Visit Sohel Ahamed's LinkedIn">
+          <i class="bi bi-linkedin"></i> Sohel Ahamed
+        </a>
+      </p>
+    </section>
+  </main>
+
+  <!-- Back-to-Top Button -->
+  <button id="backToTop" title="Back to Top" aria-label="Scroll back to top">&#8679;</button>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Sohel Ahamed. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS for Back-to-Top -->
+  <script>
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTopBtn.style.display = window.pageYOffset > 300 ? 'flex' : 'none';
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
